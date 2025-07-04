@@ -1,0 +1,108 @@
+{
+  "firstName": "Muhammad",
+  "lastName": "Wasil",
+  "positionTitle": "Full Stack Developer",
+  "tabs": {
+    "about": {
+      "aboutParagraph": "I'm a passionate full-stack developer with 5+ years of experience building modern web applications. I specialize in React, Node.js, and cloud technologies. When I'm not coding, you can find me contributing to open-source projects or exploring new technologies.",
+      "skills": [
+        "React/Next.js",
+        "Node.js/Express",
+        "TypeScript",
+        "Python/Django",
+        "AWS/Cloud Services",
+        "Docker/Kubernetes",
+        "PostgreSQL/MongoDB",
+        "GraphQL"
+      ],
+      "links": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/johndoe"
+        },
+        {
+          "title": "LinkedIn",
+          "url": "https://linkedin.com/in/johndoe"
+        },
+        {
+          "title": "Twitter",
+          "url": "https://twitter.com/johndoe"
+        }
+      ]
+    },
+    "gallery": [
+      {
+        "title": "E-commerce Platform",
+        "imageLink": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+        "description": "A modern e-commerce platform built with Next.js and Stripe. Features include user authentication, product catalog, shopping cart, and payment processing. Check out the [live demo](https://demo-ecommerce.com) and [source code](https://github.com/johndoe/ecommerce)."
+      },
+      {
+        "title": "Task Management App",
+        "imageLink": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop",
+        "description": "A collaborative task management application with real-time updates using Socket.io. Built with React frontend and Node.js backend. Features drag-and-drop interface and team collaboration tools."
+      },
+      {
+        "title": "Weather Dashboard",
+        "imageLink": "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop",
+        "description": "A beautiful weather dashboard with location-based forecasts. Integrates with OpenWeatherMap API and includes interactive charts. View the [project here](https://weather-dashboard.com)."
+      }
+    ],
+    "pastProjects": [
+      {
+        "title": "Social Media Analytics Platform",
+        "startDate": "2023-01",
+        "endDate": "2023-06",
+        "description": "Developed a comprehensive analytics platform for social media management. Features include data visualization, automated reporting, and multi-platform integration.",
+        "link": "https://analytics-platform.com"
+      },
+      {
+        "title": "Mobile Banking App",
+        "startDate": "2022-03",
+        "endDate": "2022-12",
+        "description": "Built a secure mobile banking application with biometric authentication and real-time transaction processing.",
+        "link": "https://mobile-banking-app.com"
+      },
+      {
+        "title": "Restaurant Management System",
+        "startDate": "2021-08",
+        "endDate": "2022-02",
+        "description": "Created a complete restaurant management system including inventory tracking, order management, and customer analytics."
+      },
+      {
+        "title": "Fitness Tracking App",
+        "startDate": "2021-01",
+        "endDate": "2021-07",
+        "description": "Developed a fitness tracking application with workout planning, progress monitoring, and social features.",
+        "link": "https://fitness-tracker.com"
+      }
+    ],
+    "contact": {
+      "contactForm": {
+        "enabled": true,
+        "fields": ["name", "email", "subject", "message"]
+      },
+      "links": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com/johndoe",
+          "icon": "github"
+        },
+        {
+          "title": "LinkedIn",
+          "url": "https://linkedin.com/in/johndoe",
+          "icon": "linkedin"
+        },
+        {
+          "title": "Twitter",
+          "url": "https://twitter.com/johndoe",
+          "icon": "twitter"
+        },
+        {
+          "title": "Email",
+          "url": "mailto:john.doe@example.com",
+          "icon": "mail"
+        }
+      ]
+    }
+  }
+} 
