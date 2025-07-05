@@ -37,7 +37,8 @@ const defaultPortfolioData = {
     },
     ai: {
       chatbot: {
-        enabled: false
+        enabled: false,
+        instructions: ''
       }
     },
     contact: {
@@ -234,8 +235,15 @@ const PortfolioForm: React.FC = () => {
     if (!data.tabs?.ai) {
       migrated.tabs.ai = {
         chatbot: {
-          enabled: false
+          enabled: false,
+          instructions: ''
         }
+      };
+    } else if (!data.tabs.ai.chatbot?.instructions) {
+      // Add instructions field if it doesn't exist
+      migrated.tabs.ai.chatbot = {
+        ...migrated.tabs.ai.chatbot,
+        instructions: ''
       };
     }
     
@@ -880,21 +888,43 @@ const PortfolioForm: React.FC = () => {
               </div>
             </div>
             
-            <div className="form-control">
-              <label className="label cursor-pointer">
-                <span className="label-text font-medium">Enable AI Chatbot</span>
-                <input
-                  type="checkbox"
-                  checked={portfolioData.tabs.ai?.chatbot?.enabled ?? false}
-                  onChange={(e) => updateField('tabs.ai.chatbot.enabled', e.target.checked)}
-                  className="checkbox checkbox-primary"
-                />
-              </label>
-              <label className="label">
-                <span className="label-text-alt text-base-content/60">
-                  Visitors can chat with an AI assistant about your work and experience
-                </span>
-              </label>
+            <div className="space-y-6">
+              <div className="form-control">
+                <label className="label cursor-pointer">
+                  <span className="label-text font-medium">Enable AI Chatbot</span>
+                  <input
+                    type="checkbox"
+                    checked={portfolioData.tabs.ai?.chatbot?.enabled ?? false}
+                    onChange={(e) => updateField('tabs.ai.chatbot.enabled', e.target.checked)}
+                    className="checkbox checkbox-primary"
+                  />
+                </label>
+                <label className="label">
+                  <span className="label-text-alt text-base-content/60">
+                    Visitors can chat with an AI assistant about your work and experience
+                  </span>
+                </label>
+              </div>
+
+              {(portfolioData.tabs.ai?.chatbot?.enabled ?? false) && (
+                <div className="space-y-4">
+                  <ModernTextarea
+                    label="AI Instructions"
+                    value={portfolioData.tabs.ai?.chatbot?.instructions || ''}
+                    onChange={(value) => updateField('tabs.ai.chatbot.instructions', value)}
+                    placeholder="Tell the AI how to respond to visitors. For example: 'You are a helpful assistant representing [Your Name]. You can discuss my projects, skills, and experience. Be professional but friendly. If asked about specific projects, refer to the ones listed in my portfolio. If asked about contact information, direct them to my contact section.'"
+                    rows={6}
+                  />
+                  
+                  <div className="bg-base-200 rounded-lg p-4">
+                    <h4 className="font-medium text-base-content mb-2">💡 Tips for AI Instructions:</h4>
+                    <ul className="text-sm text-base-content/70 space-y-1">
+                      <li>The ai model is already trained on your portfolio and your information. You don't need to tell it about your portfolio or your information.</li>
+                      <li>Write about additional information like the tone of voice, personality, and how to respond to visitors.</li>
+                    </ul>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

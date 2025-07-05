@@ -55,10 +55,10 @@ export async function POST(request: NextRequest) {
     // Get IP address from various headers
     const getClientIP = () => {
       return request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-             request.headers.get('x-real-ip') ||
-             request.headers.get('cf-connecting-ip') ||
-             request.headers.get('x-client-ip') ||
-             'Unknown';
+        request.headers.get('x-real-ip') ||
+        request.headers.get('cf-connecting-ip') ||
+        request.headers.get('x-client-ip') ||
+        'Unknown';
     };
 
     // Save user message to Firebase
@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json();
-    
+
     if (data.error) {
       return NextResponse.json(
         { error: data.error },
@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       response: data.resp_text,
       sessionId: chatSession?.sessionId
     });
@@ -146,9 +146,9 @@ export async function POST(request: NextRequest) {
 
 function createInstructions(portfolioData: any): string {
   const { firstName, lastName, positionTitle, tabs } = portfolioData;
-  
+
   let instructions = `You are an AI assistant for ${firstName} ${lastName}'s portfolio. `;
-  
+
   if (positionTitle) {
     instructions += `${firstName} is a ${positionTitle}. `;
   }
@@ -171,7 +171,7 @@ function createInstructions(portfolioData: any): string {
 
   // Add projects
   if (tabs.pastProjects?.projects && tabs.pastProjects.projects.length > 0) {
-    const projects = tabs.pastProjects.projects.map((project: any) => 
+    const projects = tabs.pastProjects.projects.map((project: any) =>
       `${project.title}: ${project.description}${project.link ? ` (${project.link})` : ''}`
     ).join('; ');
     instructions += `Past projects: ${projects}. `;
@@ -179,7 +179,7 @@ function createInstructions(portfolioData: any): string {
 
   // Add gallery items
   if (tabs.gallery?.items && tabs.gallery.items.length > 0) {
-    const galleryItems = tabs.gallery.items.map((item: any) => 
+    const galleryItems = tabs.gallery.items.map((item: any) =>
       `${item.title}: ${item.description}`
     ).join('; ');
     instructions += `Gallery items: ${galleryItems}. `;
@@ -187,7 +187,7 @@ function createInstructions(portfolioData: any): string {
 
   // Add blog posts
   if (tabs.blogs?.posts && tabs.blogs.posts.length > 0) {
-    const blogPosts = tabs.blogs.posts.map((post: any) => 
+    const blogPosts = tabs.blogs.posts.map((post: any) =>
       `${post.title}: ${post.description}`
     ).join('; ');
     instructions += `Blog posts: ${blogPosts}. `;
@@ -195,24 +195,34 @@ function createInstructions(portfolioData: any): string {
 
   // Add contact information
   if (tabs.contact?.links && tabs.contact.links.length > 0) {
-    const contactLinks = tabs.contact.links.map((link: any) => 
+    const contactLinks = tabs.contact.links.map((link: any) =>
       `${link.title}: ${link.url}`
     ).join(', ');
     instructions += `Contact information: ${contactLinks}. `;
   }
 
+  // Append custom AI instructions if available
+  if (tabs.ai?.chatbot?.instructions?.trim()) {
+    instructions += `\n\nCustom Instructions (Preferred):\n${tabs.ai.chatbot.instructions.trim()}\n`;
+  }
+
+  // Append default AI instructions
   instructions += `
-  
-  Instructions:
-  - Act as ${firstName} and respond as if you are ${firstName}.
-  - Respond in a friendly, professional, and helpful manner.
-  - Keep responses very short only one or two lines and non pushy.
-  - For listing things, use bullet points.
-  - Focus on ${firstName}'s work, experience, and portfolio content
-  - If asked about something not in the portfolio, politely redirect to available information
-  - Use a conversational tone but maintain professionalism
-  - Use plain text, no markdown.
-  `;
+Default Instructions:
+- Act as ${firstName} and respond on their behalf.
+- Maintain a friendly, professional, and helpful tone.
+- Keep responses concise — ideally one or two lines.
+- Avoid being pushy in any way.
+- Use bullet points for lists.
+- Focus on ${firstName}'s work, experience, and portfolio.
+- If asked about topics not covered in the portfolio, kindly redirect to what's available.
+- Use a conversational yet professional style.
+- Respond in plain text (no markdown).
+
+Note: Custom instructions, when provided, take precedence over these defaults.
+`;
+
+
 
   return instructions;
 } 
