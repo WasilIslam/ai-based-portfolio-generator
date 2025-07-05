@@ -13,20 +13,27 @@ const Page = () => {
 
   useEffect(() => {
     document.title = 'CutHours - AI Portfolio Platform'
-    
+
     const hostname = window.location.hostname
     const subdomainMatch = hostname.match(/^([^.]+)\./)
-    
+
     // List of common subdomains to ignore
     const ignoredSubdomains = ['www', 'auth', 'api', 'admin', 'app', 'cdn', 'static', 'assets', 'blog', 'docs', 'help', 'support', 'mail', 'email', 'ftp', 'smtp', 'pop', 'imap', 'webmail', 'cpanel', 'whm', 'ns1', 'ns2', 'mx1', 'mx2']
-    
+
     if (subdomainMatch && !ignoredSubdomains.includes(subdomainMatch[1])) {
       setIsSubdomain(true)
       setPortfolioId(subdomainMatch[1])
     } else {
-      setIsSubdomain(false)
+      if (window.location.href === "https://cuthours.com/" || window.location.href === "https://cuthours.com") {
+        setIsSubdomain(false)
+        setPortfolioId(null)
+        setIsLoading(false)
+        return
+      } else {
+        setIsSubdomain(false)
+      }
     }
-    
+
     setIsLoading(false)
   }, [router])
 
@@ -56,7 +63,7 @@ const Page = () => {
             <SparklesIcon className="w-6 h-6 md:w-8 md:h-8 text-white" />
             <span className="text-lg md:text-2xl font-bold tracking-wider">CUTHOURS</span>
           </div>
-          <button 
+          <button
             onClick={() => router.push('/create')}
             className="bg-white text-black px-4 md:px-6 py-2 font-medium hover:bg-gray-200 transition-colors text-sm md:text-base"
           >
@@ -68,7 +75,7 @@ const Page = () => {
       {/* Main Content - Newspaper Layout */}
       <main className="max-w-7xl mx-auto p-4 md:p-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 min-h-[calc(100vh-200px)]">
-          
+
           {/* Left Column - Main Story */}
           <div className="lg:col-span-8 space-y-6 lg:space-y-8">
             {/* Headline */}
@@ -104,7 +111,7 @@ const Page = () => {
 
             {/* CTA */}
             <div className="border-t border-gray-800 pt-4 lg:pt-6">
-              <button 
+              <button
                 onClick={() => router.push('/create')}
                 className="bg-white text-black px-6 md:px-8 py-3 font-bold text-base md:text-lg hover:bg-gray-200 transition-colors w-full md:w-auto"
               >
@@ -136,8 +143,8 @@ const Page = () => {
               <p className="text-xs md:text-sm text-gray-400 mb-3 lg:mb-4">
                 Want to use your own domain? Contact us.
               </p>
-              <a 
-                href="mailto:wasilislam456@gmail.com" 
+              <a
+                href="mailto:wasilislam456@gmail.com"
                 className="text-white border border-white px-3 md:px-4 py-2 text-xs md:text-sm hover:bg-white hover:text-black transition-colors inline-block"
               >
                 CONTACT US
@@ -156,7 +163,7 @@ const Page = () => {
               Live example of our portfolio platform
             </p>
           </div>
-          
+
           <div className="w-full h-[600px] md:h-[700px] lg:h-[800px] border border-gray-800 bg-gray-900">
             <iframe
               src="/portfolio?id=wasil"
