@@ -21,17 +21,21 @@ const Page = () => {
     const ignoredSubdomains = ['www', 'auth', 'api', 'admin', 'app', 'cdn', 'static', 'assets', 'blog', 'docs', 'help', 'support', 'mail', 'email', 'ftp', 'smtp', 'pop', 'imap', 'webmail', 'cpanel', 'whm', 'ns1', 'ns2', 'mx1', 'mx2']
 
     if (subdomainMatch && !ignoredSubdomains.includes(subdomainMatch[1])) {
-      setIsSubdomain(true)
-      setPortfolioId(subdomainMatch[1])
-    } else {
+
       if (window.location.href === "https://cuthours.com/" || window.location.href === "https://cuthours.com") {
         setIsSubdomain(false)
         setPortfolioId(null)
         setIsLoading(false)
         return
+        
       } else {
-        setIsSubdomain(false)
+        setIsSubdomain(true)
+        setPortfolioId(subdomainMatch[1])
       }
+    } else {
+
+      setIsSubdomain(false)
+
     }
 
     setIsLoading(false)
