@@ -12,20 +12,39 @@ interface PortfolioData {
       skills: string[]
       links: Array<{ title: string; url: string }>
     }
-    gallery: Array<{
-      title: string
-      description: string
-      imageLink: string
-    }>
-    pastProjects: Array<{
-      title: string
-      description: string
-      startDate?: string
-      endDate?: string
-      link?: string
-    }>
+    gallery: {
+      display: boolean
+      items: Array<{
+        title: string
+        description: string
+        imageLink: string
+      }>
+    }
+    pastProjects: {
+      display: boolean
+      projects: Array<{
+        title: string
+        description: string
+        startDate?: string
+        endDate?: string
+        link?: string
+      }>
+    }
+    blogs: {
+      display: boolean
+      posts: Array<{
+        title: string
+        description: string
+        content: string
+      }>
+    }
+    ai: {
+      chatbot: {
+        enabled: boolean
+      }
+    }
     contact: {
-      links: Array<{ title: string; url: string }>
+      links: Array<{ type: string; title: string; url: string }>
       contactForm: { enabled: boolean }
     }
   }

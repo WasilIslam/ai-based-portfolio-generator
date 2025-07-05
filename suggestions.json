@@ -1,0 +1,468 @@
+{
+  "skills": [
+    "React/Next.js",
+    "Node.js/Express",
+    "TypeScript",
+    "JavaScript",
+    "Python",
+    "Django",
+    "Flask",
+    "Java",
+    "Spring Boot",
+    "C#",
+    ".NET",
+    "PHP",
+    "Laravel",
+    "Ruby",
+    "Rails",
+    "Go",
+    "Rust",
+    "Swift",
+    "Kotlin",
+    "Dart",
+    "Flutter",
+    "AWS",
+    "Azure",
+    "Google Cloud",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+    "Redis",
+    "GraphQL",
+    "REST APIs",
+    "Microservices",
+    "CI/CD",
+    "Git",
+    "GitHub Actions",
+    "Jenkins",
+    "Jira",
+    "Confluence",
+    "Figma",
+    "Adobe Creative Suite",
+    "Sketch",
+    "InVision",
+    "Zeplin",
+    "Product Management",
+    "Agile/Scrum",
+    "User Research",
+    "UX Design",
+    "UI Design",
+    "Wireframing",
+    "Prototyping",
+    "A/B Testing",
+    "Google Analytics",
+    "SEO",
+    "Content Marketing",
+    "Social Media Marketing",
+    "Email Marketing",
+    "PPC Advertising",
+    "Data Analysis",
+    "Machine Learning",
+    "Deep Learning",
+    "TensorFlow",
+    "PyTorch",
+    "Scikit-learn",
+    "Pandas",
+    "NumPy",
+    "Matplotlib",
+    "Tableau",
+    "Power BI",
+    "Excel",
+    "SQL",
+    "R",
+    "SAS",
+    "SPSS",
+    "Project Management",
+    "Team Leadership",
+    "Public Speaking",
+    "Technical Writing",
+    "Documentation",
+    "Training",
+    "Mentoring",
+    "Sales",
+    "Customer Success",
+    "Business Development",
+    "Strategic Planning",
+    "Budget Management",
+    "Vendor Management",
+    "Legal",
+    "Compliance",
+    "Security",
+    "Penetration Testing",
+    "DevSecOps",
+    "Blockchain",
+    "Web3",
+    "Smart Contracts",
+    "Solidity",
+    "Mobile Development",
+    "iOS Development",
+    "Android Development",
+    "Cross-platform Development",
+    "Game Development",
+    "Unity",
+    "Unreal Engine",
+    "3D Modeling",
+    "Blender",
+    "Maya",
+    "Video Editing",
+    "Premiere Pro",
+    "After Effects",
+    "Motion Graphics",
+    "Photography",
+    "Videography",
+    "Audio Production",
+    "Podcasting",
+    "Live Streaming",
+    "Virtual Reality",
+    "Augmented Reality",
+    "IoT",
+    "Embedded Systems",
+    "Hardware Design",
+    "PCB Design",
+    "Robotics",
+    "Automation",
+    "RPA",
+    "Chatbots",
+    "NLP",
+    "Computer Vision",
+    "Natural Language Processing",
+    "Speech Recognition",
+    "Translation",
+    "Localization",
+    "Accessibility",
+    "Performance Optimization",
+    "Security Auditing",
+    "Code Review",
+    "Testing",
+    "Unit Testing",
+    "Integration Testing",
+    "E2E Testing",
+    "Test Automation",
+    "Selenium",
+    "Cypress",
+    "Jest",
+    "Mocha",
+    "Chai",
+    "Pytest",
+    "JUnit",
+    "NUnit",
+    "xUnit"
+  ],
+  "socialLinks": [
+    {
+      "title": "GitHub",
+      "url": "github.com/",
+      "icon": "github"
+    },
+    {
+      "title": "LinkedIn",
+      "url": "linkedin.com/in/",
+      "icon": "linkedin"
+    },
+    {
+      "title": "Twitter",
+      "url": "twitter.com/",
+      "icon": "twitter"
+    },
+    {
+      "title": "Instagram",
+      "url": "instagram.com/",
+      "icon": "instagram"
+    },
+    {
+      "title": "Facebook",
+      "url": "facebook.com/",
+      "icon": "facebook"
+    },
+    {
+      "title": "YouTube",
+      "url": "youtube.com/",
+      "icon": "youtube"
+    },
+    {
+      "title": "TikTok",
+      "url": "tiktok.com/@",
+      "icon": "tiktok"
+    },
+    {
+      "title": "Twitch",
+      "url": "twitch.tv/",
+      "icon": "twitch"
+    },
+    {
+      "title": "Discord",
+      "url": "discord.gg/",
+      "icon": "discord"
+    },
+    {
+      "title": "Reddit",
+      "url": "reddit.com/user/",
+      "icon": "reddit"
+    },
+    {
+      "title": "Medium",
+      "url": "medium.com/@",
+      "icon": "medium"
+    },
+    {
+      "title": "Dev.to",
+      "url": "dev.to/",
+      "icon": "dev"
+    },
+    {
+      "title": "Stack Overflow",
+      "url": "stackoverflow.com/users/",
+      "icon": "stackoverflow"
+    },
+    {
+      "title": "Behance",
+      "url": "behance.net/",
+      "icon": "behance"
+    },
+    {
+      "title": "Dribbble",
+      "url": "dribbble.com/",
+      "icon": "dribbble"
+    },
+    {
+      "title": "Pinterest",
+      "url": "pinterest.com/",
+      "icon": "pinterest"
+    },
+    {
+      "title": "Snapchat",
+      "url": "snapchat.com/add/",
+      "icon": "snapchat"
+    },
+    {
+      "title": "Telegram",
+      "url": "t.me/",
+      "icon": "telegram"
+    },
+    {
+      "title": "WhatsApp",
+      "url": "wa.me/",
+      "icon": "whatsapp"
+    },
+    {
+      "title": "Signal",
+      "url": "signal.org/",
+      "icon": "signal"
+    },
+    {
+      "title": "Mastodon",
+      "url": "mastodon.social/@",
+      "icon": "mastodon"
+    },
+    {
+      "title": "Threads",
+      "url": "threads.net/@",
+      "icon": "threads"
+    },
+    {
+      "title": "Bluesky",
+      "url": "bsky.app/profile/",
+      "icon": "bluesky"
+    },
+    {
+      "title": "Substack",
+      "url": "substack.com/@",
+      "icon": "substack"
+    },
+    {
+      "title": "Newsletter",
+      "url": "buttondown.email/",
+      "icon": "newsletter"
+    },
+    {
+      "title": "Personal Website",
+      "url": "",
+      "icon": "globe"
+    },
+    {
+      "title": "Portfolio",
+      "url": "",
+      "icon": "briefcase"
+    },
+    {
+      "title": "Blog",
+      "url": "",
+      "icon": "rss"
+    },
+    {
+      "title": "Resume",
+      "url": "",
+      "icon": "document"
+    },
+    {
+      "title": "CV",
+      "url": "",
+      "icon": "document-text"
+    }
+  ],
+  "contactTypes": [
+    {
+      "type": "email",
+      "label": "Email",
+      "prefix": "mailto:",
+      "placeholder": "your@email.com",
+      "validation": "email",
+      "icon": "envelope"
+    },
+    {
+      "type": "phone",
+      "label": "Phone",
+      "prefix": "tel:",
+      "placeholder": "+1 (555) 123-4567",
+      "validation": "phone",
+      "icon": "phone"
+    },
+    {
+      "type": "whatsapp",
+      "label": "WhatsApp",
+      "prefix": "https://wa.me/",
+      "placeholder": "15551234567",
+      "validation": "phone",
+      "icon": "whatsapp"
+    },
+    {
+      "type": "telegram",
+      "label": "Telegram",
+      "prefix": "https://t.me/",
+      "placeholder": "username",
+      "validation": "username",
+      "icon": "telegram"
+    },
+    {
+      "type": "discord",
+      "label": "Discord",
+      "prefix": "https://discord.gg/",
+      "placeholder": "invite-code",
+      "validation": "discord",
+      "icon": "discord"
+    },
+    {
+      "type": "skype",
+      "label": "Skype",
+      "prefix": "skype:",
+      "placeholder": "username",
+      "validation": "username",
+      "icon": "skype"
+    },
+    {
+      "type": "zoom",
+      "label": "Zoom",
+      "prefix": "https://zoom.us/j/",
+      "placeholder": "meeting-id",
+      "validation": "zoom",
+      "icon": "video-camera"
+    },
+    {
+      "type": "calendly",
+      "label": "Calendly",
+      "prefix": "https://calendly.com/",
+      "placeholder": "username",
+      "validation": "calendly",
+      "icon": "calendar"
+    },
+    {
+      "type": "linkedin",
+      "label": "LinkedIn",
+      "prefix": "https://linkedin.com/in/",
+      "placeholder": "username",
+      "validation": "linkedin",
+      "icon": "linkedin"
+    },
+    {
+      "type": "github",
+      "label": "GitHub",
+      "prefix": "https://github.com/",
+      "placeholder": "username",
+      "validation": "github",
+      "icon": "github"
+    },
+    {
+      "type": "twitter",
+      "label": "Twitter",
+      "prefix": "https://twitter.com/",
+      "placeholder": "username",
+      "validation": "twitter",
+      "icon": "twitter"
+    },
+    {
+      "type": "instagram",
+      "label": "Instagram",
+      "prefix": "https://instagram.com/",
+      "placeholder": "username",
+      "validation": "instagram",
+      "icon": "instagram"
+    },
+    {
+      "type": "facebook",
+      "label": "Facebook",
+      "prefix": "https://facebook.com/",
+      "placeholder": "username",
+      "validation": "facebook",
+      "icon": "facebook"
+    },
+    {
+      "type": "youtube",
+      "label": "YouTube",
+      "prefix": "https://youtube.com/",
+      "placeholder": "channel-name",
+      "validation": "youtube",
+      "icon": "youtube"
+    },
+    {
+      "type": "twitch",
+      "label": "Twitch",
+      "prefix": "https://twitch.tv/",
+      "placeholder": "username",
+      "validation": "twitch",
+      "icon": "twitch"
+    },
+    {
+      "type": "website",
+      "label": "Website",
+      "prefix": "https://",
+      "placeholder": "yourwebsite.com",
+      "validation": "url",
+      "icon": "globe"
+    },
+    {
+      "type": "portfolio",
+      "label": "Portfolio",
+      "prefix": "https://",
+      "placeholder": "portfolio.com",
+      "validation": "url",
+      "icon": "briefcase"
+    },
+    {
+      "type": "blog",
+      "label": "Blog",
+      "prefix": "https://",
+      "placeholder": "blog.com",
+      "validation": "url",
+      "icon": "rss"
+    },
+    {
+      "type": "resume",
+      "label": "Resume",
+      "prefix": "https://",
+      "placeholder": "resume.pdf",
+      "validation": "url",
+      "icon": "document"
+    },
+    {
+      "type": "custom",
+      "label": "Custom",
+      "prefix": "",
+      "placeholder": "Enter custom URL",
+      "validation": "url",
+      "icon": "link"
+    }
+  ]
+} 

@@ -1,8 +1,24 @@
 'use client'
 
 import React, { useState } from 'react'
+import { 
+  EnvelopeIcon, 
+  PhoneIcon, 
+  LinkIcon,
+  ChatBubbleLeftRightIcon,
+  VideoCameraIcon,
+  CalendarIcon,
+  UserIcon,
+  CommandLineIcon,
+  GlobeAltIcon,
+  BriefcaseIcon,
+  DocumentTextIcon,
+  RssIcon,
+  DocumentIcon
+} from '@heroicons/react/24/outline'
 
 interface Link {
+  type: string
   title: string
   url: string
 }
@@ -18,15 +34,19 @@ interface ContactData {
 
 interface ContactTabProps {
   data: ContactData
+  portfolioData?: any
 }
 
-const ContactTab: React.FC<ContactTabProps> = ({ data }) => {
+const ContactTab: React.FC<ContactTabProps> = ({ data, portfolioData }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitMessage, setSubmitMessage] = useState('')
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -36,10 +56,50 @@ const ContactTab: React.FC<ContactTabProps> = ({ data }) => {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+    
+    if (!portfolioData) {
+      setSubmitStatus('error')
+      setSubmitMessage('Portfolio data not available')
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+    setSubmitMessage('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          portfolioId: portfolioData.portfolioId || portfolioData.id,
+          creatorEmail: portfolioData.userEmail,
+          creatorName: portfolioData.userName || `${portfolioData.firstName} ${portfolioData.lastName}`
+        }),
+      })
+
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        setSubmitStatus('success')
+        setSubmitMessage('Message sent successfully! We\'ll get back to you soon.')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setSubmitStatus('error')
+        setSubmitMessage(result.error || 'Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+      setSubmitMessage('An error occurred. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -51,20 +111,64 @@ const ContactTab: React.FC<ContactTabProps> = ({ data }) => {
             Connect
           </h2>
           <div className="space-y-4">
-            {data.links.map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-3 border border-base-300 text-base-content hover:border-primary hover:text-primary rounded-lg transition-colors group"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-                <span className="font-medium">{link.title}</span>
-              </a>
-            ))}
+            {data.links.map((link, index) => {
+              const getIcon = (type: string) => {
+                switch (type) {
+                  case 'email':
+                    return <EnvelopeIcon className="w-5 h-5" />
+                  case 'phone':
+                    return <PhoneIcon className="w-5 h-5" />
+                  case 'whatsapp':
+                  case 'telegram':
+                  case 'discord':
+                    return <ChatBubbleLeftRightIcon className="w-5 h-5" />
+                  case 'skype':
+                    return <VideoCameraIcon className="w-5 h-5" />
+                  case 'zoom':
+                    return <VideoCameraIcon className="w-5 h-5" />
+                  case 'calendly':
+                    return <CalendarIcon className="w-5 h-5" />
+                  case 'linkedin':
+                    return <UserIcon className="w-5 h-5" />
+                  case 'github':
+                    return <CommandLineIcon className="w-5 h-5" />
+                  case 'twitter':
+                    return <UserIcon className="w-5 h-5" />
+                  case 'instagram':
+                    return <UserIcon className="w-5 h-5" />
+                  case 'facebook':
+                    return <UserIcon className="w-5 h-5" />
+                  case 'youtube':
+                    return <VideoCameraIcon className="w-5 h-5" />
+                  case 'twitch':
+                    return <VideoCameraIcon className="w-5 h-5" />
+                  case 'website':
+                    return <GlobeAltIcon className="w-5 h-5" />
+                  case 'portfolio':
+                    return <BriefcaseIcon className="w-5 h-5" />
+                  case 'blog':
+                    return <RssIcon className="w-5 h-5" />
+                  case 'resume':
+                    return <DocumentIcon className="w-5 h-5" />
+                  case 'custom':
+                  default:
+                    return <LinkIcon className="w-5 h-5" />
+                }
+              };
+
+              return (
+                <a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-4 py-3 border border-base-300 text-base-content hover:border-primary hover:text-primary rounded-lg transition-colors group"
+                >
+                  {getIcon(link.type)}
+                  <span className="font-medium">{link.title}</span>
+                </a>
+              );
+            })}
           </div>
         </section>
 
@@ -85,6 +189,7 @@ const ContactTab: React.FC<ContactTabProps> = ({ data }) => {
                     onChange={handleInputChange}
                     className="w-full px-3 py-2 border border-base-300 rounded focus:border-primary focus:outline-none" 
                     required 
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -96,6 +201,7 @@ const ContactTab: React.FC<ContactTabProps> = ({ data }) => {
                     onChange={handleInputChange}
                     className="w-full px-3 py-2 border border-base-300 rounded focus:border-primary focus:outline-none" 
                     required 
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -108,6 +214,7 @@ const ContactTab: React.FC<ContactTabProps> = ({ data }) => {
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-base-300 rounded focus:border-primary focus:outline-none" 
                   required 
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
@@ -118,10 +225,27 @@ const ContactTab: React.FC<ContactTabProps> = ({ data }) => {
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-base-300 rounded focus:border-primary focus:outline-none h-32 resize-none" 
                   required
+                  disabled={isSubmitting}
                 ></textarea>
               </div>
-              <button type="submit" className="w-full px-4 py-2 bg-primary text-primary-content rounded hover:bg-primary/90 transition-colors">
-                Send Message
+              {submitStatus === 'success' && (
+                <div className="p-3 bg-success/10 border border-success/20 rounded text-success text-sm">
+                  {submitMessage}
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="p-3 bg-error/10 border border-error/20 rounded text-error text-sm">
+                  {submitMessage}
+                </div>
+              )}
+              
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full px-4 py-2 bg-primary text-primary-content rounded hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </section>

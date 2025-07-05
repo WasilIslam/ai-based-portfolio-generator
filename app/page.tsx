@@ -1,46 +1,42 @@
 'use client'
 
-import React from 'react'
-import portfolioData from '../example.json'
-import { PortfolioProvider } from './context/PortfolioContext'
-import { useActiveTab } from './hooks/useActiveTab'
-import { TABS } from './constants/tabs'
-import ThemeSwitcher from './components/ThemeSwitcher'
-import Header from './components/Header'
-import MainContent from './components/MainContent'
-import Footer from './components/Footer'
-
-const PortfolioApp: React.FC = () => {
-  const { activeTab, changeTab } = useActiveTab('about')
-
-  return (
-    <div className="min-h-screen bg-base-100">
-      <ThemeSwitcher />
-      
-      <Header
-        firstName={portfolioData.firstName}
-        lastName={portfolioData.lastName}
-        positionTitle={portfolioData.positionTitle}
-        activeTab={activeTab}
-        onTabChange={changeTab}
-        tabs={TABS}
-      />
-
-      <MainContent activeTab={activeTab} />
-
-      <Footer 
-        firstName={portfolioData.firstName}
-        lastName={portfolioData.lastName}
-      />
-    </div>
-  )
-}
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import PortfolioPage from './portfolio/page'
 
 const Page = () => {
+  const router = useRouter()
+  const [isSubdomain, setIsSubdomain] = useState(false)
+  const [portfolioId, setPortfolioId] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Set title for loading state
+    document.title = 'Loading... | CutHours'
+    
+    // Check if we're on a subdomain
+    const hostname = window.location.hostname
+    const subdomainMatch = hostname.match(/^([^.]+)\./)
+    
+    if (subdomainMatch && subdomainMatch[1] !== 'www') {
+      // We're on a subdomain, treat the subdomain as portfolio ID
+      setIsSubdomain(true)
+      setPortfolioId(subdomainMatch[1])
+    } else {
+      // No subdomain, redirect to create
+      router.push('/create')
+    }
+  }, [router])
+
+  // If we're on a subdomain, render the portfolio component
+  if (isSubdomain && portfolioId) {
+    return <PortfolioPage portfolioId={portfolioId} />
+  }
+
+  // Loading state while checking subdomain
   return (
-    <PortfolioProvider data={portfolioData}>
-      <PortfolioApp />
-    </PortfolioProvider>
+    <div className="min-h-screen bg-base-100 flex items-center justify-center">
+      <div className="loading loading-spinner loading-lg"></div>
+    </div>
   )
 }
 
