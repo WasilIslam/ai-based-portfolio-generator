@@ -1,0 +1,28 @@
+$TTL 14400
+@   IN  A       76.76.21.21
+
+; MX Records
+@   IN  MX 10   mx.zoho.com.
+@   IN  MX 10   mx2.zoho.com.
+@   IN  MX 10   mx3.zoho.com.
+send    IN  MX 10   feedback-smtp.us-east-1.amazonses.com.
+
+; TXT Records
+@   IN  TXT     "google-site-verification=mIkoIOes0HlZyuNkwXcBIX05asfUfIuD8izuNpoPLFA"
+@   IN  TXT     "v=spf1 include:zoho.com ~all"
+send    IN  TXT     "v=spf1 include:amazonses.com ~all"
+_dmarc  IN  TXT     "v=DMARC1; p=none;"
+zmail._domainkey IN TXT "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCMSMMYzw49aFgdv6F8G3iwR2E2M9hCtRO0cVuBkTygCYA/jTeWUZnOAKI+xXBz5Uor4NvaBzI2ssQ0p2WEjBpbwwOhlWsBHeAYdhPgKKc5cH+LHDCQ5ko3LhJQIngzSug0UogD9KElygMgWb7FfelXZKjK+8qv7lZSABHSCANuVwIDAQAB"
+resend._domainkey IN TXT "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCLeT3QQqm1HO1H2RriJqYDgNuChKQ0oSNlBhlNH9tG4QAkFfBWt2R5cDgRMexkVsB0gR8hGnK0DyngePHDh61VdQ7M2r3ieHHgdCMFMXbV0SuDwpFz4rb7fPgH5kM+m5DrKRDy4NVttrdvpDhZhiKw/InsfTYqSlnEIDPGso4twIDAQAB"
+
+; CNAME
+www IN  CNAME   cuthours.com.
+
+; CAA Records
+@ IN CAA 0 issue "comodoca.com"
+@ IN CAA 0 issuewild "letsencrypt.org"
+@ IN CAA 0 issuewild "globalsign.com"
+@ IN CAA 0 issuewild "digicert.com"
+@ IN CAA 0 issue "letsencrypt.org"
+@ IN CAA 0 issue "globalsign.com"
+@ IN CAA 0 issue "digicert.com"

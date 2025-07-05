@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { getPortfolioByPortfolioId } from '../firebase/portfolios';
 import { Portfolio } from '../firebase/portfolios';
@@ -170,9 +170,22 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({ portfolioId: propPo
   );
 };
 
+// Loading fallback component
+const PortfolioLoading = () => (
+  <div className="min-h-screen bg-base-100">
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="loading loading-spinner loading-lg"></div>
+    </div>
+  </div>
+);
+
 // Next.js page component (no props)
 const PortfolioPage: React.FC = () => {
-  return <PortfolioContent />;
+  return (
+    <Suspense fallback={<PortfolioLoading />}>
+      <PortfolioContent />
+    </Suspense>
+  );
 };
 
 export default PortfolioPage;
