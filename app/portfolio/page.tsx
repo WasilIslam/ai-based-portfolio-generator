@@ -17,14 +17,9 @@ import Chatbot from '../components/Chatbot';
 import DynamicTitle from '../components/DynamicTitle';
 import { ExclamationTriangleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/outline';
 
-interface PortfolioPageProps {
-  portfolioId?: string;
-}
-
-const PortfolioPage: React.FC<PortfolioPageProps> = ({ portfolioId: propPortfolioId }) => {
+const PortfolioPage: React.FC = () => {
   const searchParams = useSearchParams();
-  const urlPortfolioId = searchParams.get('id');
-  const portfolioId = propPortfolioId || urlPortfolioId;
+  const portfolioId = searchParams.get('id');
   const [portfolio, setPortfolio] = useState<Portfolio | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
