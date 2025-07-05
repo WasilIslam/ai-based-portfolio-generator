@@ -7,7 +7,7 @@ import { ArrowRightIcon, SparklesIcon, ChatBubbleLeftRightIcon, PaperAirplaneIco
 
 const Page = () => {
   const router = useRouter()
-  const [isSubdomain, setIsSubdomain] = useState(true)
+  const [isSubdomain, setIsSubdomain] = useState(false)
   const [portfolioId, setPortfolioId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
