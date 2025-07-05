@@ -17,7 +17,10 @@ const Page = () => {
     const hostname = window.location.hostname
     const subdomainMatch = hostname.match(/^([^.]+)\./)
     
-    if (subdomainMatch && subdomainMatch[1] !== 'www') {
+    // List of common subdomains to ignore
+    const ignoredSubdomains = ['www', 'auth', 'api', 'admin', 'app', 'cdn', 'static', 'assets', 'blog', 'docs', 'help', 'support', 'mail', 'email', 'ftp', 'smtp', 'pop', 'imap', 'webmail', 'cpanel', 'whm', 'ns1', 'ns2', 'mx1', 'mx2']
+    
+    if (subdomainMatch && !ignoredSubdomains.includes(subdomainMatch[1])) {
       setIsSubdomain(true)
       setPortfolioId(subdomainMatch[1])
     } else {
