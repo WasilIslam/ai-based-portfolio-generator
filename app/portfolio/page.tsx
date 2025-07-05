@@ -17,9 +17,14 @@ import Chatbot from '../components/Chatbot';
 import DynamicTitle from '../components/DynamicTitle';
 import { ExclamationTriangleIcon, ArrowRightCircleIcon } from '@heroicons/react/24/outline';
 
-const PortfolioPage: React.FC = () => {
+interface PortfolioContentProps {
+  portfolioId?: string;
+}
+
+const PortfolioContent: React.FC<PortfolioContentProps> = ({ portfolioId: propPortfolioId }) => {
   const searchParams = useSearchParams();
-  const portfolioId = searchParams.get('id');
+  const urlPortfolioId = searchParams.get('id');
+  const portfolioId = propPortfolioId || urlPortfolioId;
   const [portfolio, setPortfolio] = useState<Portfolio | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -165,4 +170,10 @@ const PortfolioPage: React.FC = () => {
   );
 };
 
-export default PortfolioPage; 
+// Next.js page component (no props)
+const PortfolioPage: React.FC = () => {
+  return <PortfolioContent />;
+};
+
+export default PortfolioPage;
+export { PortfolioContent }; 

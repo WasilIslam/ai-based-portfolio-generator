@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import PortfolioPage from './portfolio/page'
+import { PortfolioContent } from './portfolio/page'
 
 const Page = () => {
   const router = useRouter()
@@ -29,7 +29,7 @@ const Page = () => {
 
   // If we're on a subdomain, render the portfolio component
   if (isSubdomain && portfolioId) {
-    return <PortfolioPage portfolioId={portfolioId} />
+    return <PortfolioContent portfolioId={portfolioId} />
   }
 
   // Loading state while checking subdomain
